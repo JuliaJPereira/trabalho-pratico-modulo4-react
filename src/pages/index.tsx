@@ -19,13 +19,14 @@ const ProductList = (props: any) => {
     <div>
       <div>{props.lastRender}</div>
       {props.products.map((product: any) => (
-        <ProductListContainer id='product-list-container'>
-          <ProductItem id='product-item'>
-            <Link href={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'black' }} >
-              {product.title}
-            </Link>
-          </ProductItem>
-        </ProductListContainer>
+        <Link href={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'black' }} >
+          <ProductListContainer id='product-list-container'>
+            <ProductItem id='product-item'>
+              <img src={product.image} alt={product.title} style={{ width: '50px' }} />
+              <div style={{ paddingLeft: '15px' }}>{product.title}</div>
+            </ProductItem>
+          </ProductListContainer>
+        </Link>
       ))}
     </div>
   )

@@ -1,3 +1,4 @@
+import { DivProduct, ProductListContainer, ProductPDP } from '@/components/Listagem';
 import useSWR from 'swr';
 
 export async function getStaticPaths() {
@@ -35,13 +36,15 @@ const Static = ({ product }: { product: any }): any => {
             .then(res => res.json()));
 
     return (
-        <div>
-            <div>{product.title}</div>
-            <div>{product.description}</div>
-            <div>{product.category}</div>
-            <div>{data?.find((item: any) => item.id === product.id).price}</div>
-            <img src={product.image} alt={product.title} style={{ width: '100px' }} />
-        </div>
+        <ProductListContainer>
+            <ProductPDP>
+                <DivProduct>{product.title}</DivProduct>
+                <DivProduct>CATEGORY: {product.category}</DivProduct>
+                <DivProduct>DESCRIPTION: {product.description}</DivProduct>
+                <DivProduct>$ {data?.find((item: any) => item.id === product.id).price}</DivProduct>
+                <DivProduct><img src={product.image} alt={product.title} style={{ width: '100px' }} /></DivProduct>
+            </ProductPDP>
+        </ProductListContainer>
     )
 }
 
